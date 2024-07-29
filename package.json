@@ -1,7 +1,7 @@
 {
-  "name": "tren-de-la-quebrada",
+  "name": "shopping-list",
   "version": "1.0.0",
-  "description": "Backend para el sistema de gestión de trenes de la Quebrada.",
+  "description": "This backend can add, edit, and remove shopping items.",
   "main": "src/index.ts",
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
