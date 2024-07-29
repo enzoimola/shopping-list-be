@@ -16,6 +16,7 @@ model Item {
   name        String   @unique
   description String
   quantity    Int
+  purchased   Boolean  @default(false)
   createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt   DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
 }
