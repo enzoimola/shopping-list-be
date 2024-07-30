@@ -15,7 +15,11 @@ export class ShoppingListService {
     return item;
   };
 
-  static all = async (): Promise<Array<Item>> => prisma.item.findMany();
+  static all = async (): Promise<Array<Item>> => prisma.item.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
   static create = async (itemBody: CreateItemParams): Promise<any> => {
     let item: DatabaseItem | null = null;
@@ -45,13 +49,12 @@ export class ShoppingListService {
       throw new ApiError(errors.NOT_FOUND_ITEM);
     }
 
-    const updatedUser = await prisma.item.update({
+    return prisma.item.update({
       where: { id: item.id },
       data: {
         ...itemData,
       },
     });
-    return updatedUser;
   };
 
   static destroy = async (id : number) : Promise<void> => {
