@@ -42,8 +42,9 @@ export class ShoppingListController extends Controller {
   }
 
   @Delete('{id}')
-  public async destroy(@Path() id: number): Promise<void> {
+  public async destroy(@Path() id: number): Promise<boolean> {
     await ShoppingListService.destroy(id);
     this.setStatus(httpStatus.OK);
+    return true;
   }
 }
